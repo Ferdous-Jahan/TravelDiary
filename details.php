@@ -1,88 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
-    <link rel="stylesheet" href="details.css">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
-    <title>TravelDiary</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .topnav .search-container {
-            float: right;
-        }
-
-        .topnav input[type=text] {
-            padding: 6px;
-            margin-top: 8px;
-            font-size: 17px;
-            border: none;
-        }
-
-        .topnav .search-container button {
-            float: right;
-            padding: 6px 10px;
-            margin-top: 8px;
-            margin-right: 16px;
-            background: #ddd;
-            font-size: 17px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .topnav .search-container button:hover {
-            background: #ccc;
-        }
-
-        @media screen and (max-width: 600px) {
-            .topnav .search-container {
-                float: none;
-            }
-
-            .topnav a,
-            .topnav input[type=text],
-            .topnav .search-container button {
-                float: none;
-                display: block;
-                text-align: left;
-                width: 100%;
-                margin: 0;
-                padding: 14px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <div
-        style="width: 100%; height: 60px; background-color: #dfdfdf; display: flex; justify-content: space-between; position: fixed;">
-        <div style="padding-left: 30px; padding-bottom: 10px;">
-            <h2><a style="text-decoration: none; color: black;" href="home.html">Travel Diary</a></h2>
-        </div>
-        <div style="padding-top: 24px;">
-            <form action="">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-        <div style="margin: 16px;">
-            <a href="user.html"><i style="padding-right: 14px;" title="Profile" class="fa fa-user fa-2x"
-                    aria-hidden="true"></i></a>
-            <a href="login.html"><i style="padding-right: 14px;" title="Logout" class="fa fa-sign-out fa-2x"
-                    aria-hidden="true"></i></a>
-        </div>
-    </div>
+  
+    <?php require('inc/navbar.php'); ?>
 
     <div style="padding-top: 64px;" class="grid-container">
 
@@ -125,9 +43,28 @@
 
         <div style="width:590px; height: 250px; overflow-y: scroll;" class="item4">
             <div style="display: flex; flex-direction: row;">
+                <h4>Comments: </h4>
+                <form action="">
+                    <input style="height: 26px; width: 408px; margin-top: 16px;" type="text"
+                        placeholder=" Review this place.....">
+                    <button>Submmit</button>
+                </form>
             </div>
-            <button type="button">Approve</button> <button type="button">Block</button>
+            <div>
+                <p>Fahim: This place is a heaven on earth</p>
+                <p>Jahan: Loved this place</p>
+                <p>Fahim: This place is a heaven on earth</p>
+                <p>Jahan: Loved this place</p>
+                <p>Fahim: This place is a heaven on earth</p>
+                <p>Jahan: Loved this place</p>
+                <p>Fahim: This place is a heaven on earth</p>
+                <p>Jahan: Loved this place</p>
+                <p>Fahim: This place is a heaven on earth</p>
+                <p>Jahan: Loved this place</p>
+            </div>
         </div>
+
+    </div>
 
 </body>
 

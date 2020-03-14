@@ -1,45 +1,6 @@
-<?php
-	$err_name="";
-	$name="";
-	$err_uname="";
-	$uname="";
-	$err_pass="";
-	$pass="";
-	if(isset($_POST['submit']))
-	{
-		
-		if(empty($_POST['name']))
-		{
-			$err_name="*Name Required";
-		}
-		else
-		{			
-			$name=htmlspecialchars($_POST['name']);
-			echo $name;
-		}
-		if (empty($_POST['uname']))
-		{
-			$err_uname="*Usename Required";
-		}
-		else
-		{
-			$uname=$_POST['uname'];
-		}
-		if (empty($_POST['pass']))
-		{
-			$err_pass="*Password Required";
-		}
-		else
-		{
-			$pass=$_POST['pass'];
-		}
-	}
-?>
-
 <!DOCTYPE html>
 
   <?php require('inc/navbar.php'); ?>
-
 
   <div style="padding-top: 54px; display: flex; flex-direction: column; align-items: center;">
 
@@ -49,19 +10,19 @@
 				<tr>
 					<td>Name:</td>
 					<td><input type="text" value="" name="name" >
-						<br><span style="color:red"><?php echo $err_name;?></span></td> 
+						<br><span style="color:red"></span></td> 
 					
 				</tr>
 				<tr>
 					<td>Username: </td>
 					<td><input type="text" name="uname" value="">
-					<br><span style="color:red"><?php echo $err_uname;?></span></td>
+					<br><span style="color:red"></span></td>
 					
 				</tr>
 				<tr>
 					<td>Password:</td>
 					<td> <input type="password" name="pass" value="">
-					<br><span style="color:red"><?php echo $err_pass;?></span></td>
+					<br><span style="color:red"></span></td>
 					
 				</tr>
 				<tr>

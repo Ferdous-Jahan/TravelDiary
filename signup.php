@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
   <?php require('inc/navbar.php'); ?>
@@ -14,8 +15,8 @@
 					
 				</tr>
 				<tr>
-					<td>Username: </td>
-					<td><input type="text" name="uname" value="">
+					<td>Email: </td>
+					<td><input type="text" name="email" value="">
 					<br><span style="color:red"></span></td>
 					
 				</tr>
@@ -25,30 +26,6 @@
 					<br><span style="color:red"></span></td>
 					
 				</tr>
-				<tr>
-					<td>Gender: </td>
-					<td><input type="radio" name="gender" value="Male"> Male <input type="radio" name="gender" value="Female"> Female</td>
-				</tr>
-				<tr>
-					<td>Hobbies: </td>
-					<td><input type="checkbox" name="hobbies[]" value="Movies"> Movies <input type="checkbox" name="hobbies[]" value="Music"> Music <input type="checkbox" name="hobbies[]" value="Games"> Games </td>
-				</tr>
-				<tr>
-					<td>Profession: </td>
-					<td>
-						<select name="profession">
-							<option>Teacher</option>
-							<option selected="selected">Student</option>
-							<option>Govt. JOb</option>
-						</select>
-					</td>
-                </tr>
-                <tr>
-                    <td>Birth Date: </td>
-                    <td>
-                        <input type="date" id="birthday" name="birthday">
-                    </td>
-                </tr>
 				<tr>
 					<td colspan="2" align="center">
 						<input style="width: 100%; height: 30px;" type="submit" name="submit" value="Submit">

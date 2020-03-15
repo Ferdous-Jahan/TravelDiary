@@ -1,8 +1,7 @@
 <?php
-  require('config/db.php');
   session_start();
   $id = null;
-  $name = null;
+  //$name = null;
   //$id = $_SESSION['id'];
   //$name = $_SESSION['name'];
 ?>
@@ -84,8 +83,8 @@
       </div>
 
       <div style="margin: 16px;">
-        <a href="user.html"><i style="padding-right: 14px;" title="Profile" class="fa fa-user fa-2x" aria-hidden="true"></i></a>
-        <a href="signup.html"><i style="padding-right: 14px;" class="fa fa-user-plus fa-2x" title="Sign Up" aria-hidden="true"></i></a>
+        <a href="user.php"><i style="padding-right: 14px;" title="Profile" class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+        <a href="signup.php"><i style="padding-right: 14px;" class="fa fa-user-plus fa-2x" title="Sign Up" aria-hidden="true"></i></a>
         <a href="login.php"><i style="padding-right: 14px;" class="fa fa-sign-in fa-2x" title="Log In" aria-hidden="true"></i></a>
         <a href="login.php"><i style="padding-right: 14px;" title="Logout" class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
       </div>

@@ -48,6 +48,7 @@
 			$result = mysqli_query($conn, $query);
 			$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 			mysqli_free_result($result);
+			mysqli_close($conn);
 
 			//check whether the users array is empty, if not check whether the email is unique, if it is unique then insert into users table.
 			//if the array is empty goes to else block.

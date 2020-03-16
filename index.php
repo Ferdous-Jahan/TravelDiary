@@ -1,5 +1,6 @@
 <?php
   require('config/db.php');
+  mysqli_close($conn);
   session_start();
   $id = $_SESSION['id'];
   $name = $_SESSION['name'];

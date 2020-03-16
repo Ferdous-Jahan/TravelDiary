@@ -1,26 +1,27 @@
 <?php
-  $err_uname="";
-  $uname="";
-  $err_pass="";
-  $pass="";
+  $errEmail="";
+  $email="";
+  $errPassword="";
+  $password="";
+  session_start();
+  session_destroy();
   
-  if(isset($_POST['submit']))
-  {
-    if (empty($_POST['uname']))
+  if(isset($_POST['submit'])){
+    if (empty($_POST['email']))
     {
-      $err_uname="*Usename Required";
+      $errEmail="Email Required";
     }
     else
     {
-      $uname=$_POST['uname'];
+      $email=$_POST['email'];
     }
-    if (empty($_POST['pass']))
+    if (empty($_POST['password']))
     {
-      $err_pass="*Password Required";
+      $errPassword="Password Required";
     }
     else
     {
-      $pass=$_POST['pass'];
+      $password=$_POST['password'];
     }
   }
 ?>
@@ -31,19 +32,19 @@
 
   <div style="padding-top: 54px; display: flex; flex-direction: column; align-items: center;">
   	<h1>LogIn</h1>
-		<form method="post" action="">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF'])?>">
 			<table style="text-align: center; border-style: solid; height: 190px; width: 300px;">
 				
 				<tr>
-					<td>Username: </td>
-					<td><input type="text" name="uname" value="">
-					<br><span style="color:red"><?php echo $err_uname;?></span></td>
+					<td>Email: </td>
+					<td><input type="text" name="email" value="<?php echo $email; ?>">
+					<br><span style="color:red"><?php echo $errEmail;?></span></td>
 					
 				</tr>
 				<tr>
 					<td>Password:</td>
-					<td> <input type="password" name="pass" value="">
-					<br><span style="color:red"><?php echo $err_pass;?></span></td>
+					<td> <input type="password" name="password" value="<?php echo $password; ?>">
+					<br><span style="color:red"><?php echo $errPassword;?></span></td>
 					
 				</tr>
 				<tr>

@@ -3,6 +3,9 @@
   session_start();
   $id = $_SESSION['id'];
   $name = $_SESSION['name'];
+  if (!isset($id)) {
+    header('Location: login.php');
+  }
 ?>
 <!DOCTYPE html>
 

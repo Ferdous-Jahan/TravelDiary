@@ -1,5 +1,6 @@
 <?php
   require('config/db.php');
+  
   $errEmail = "";
   $email = "";
   $errPassword = "";
@@ -9,15 +10,13 @@
   session_destroy();
   
   if(isset($_POST['submit'])){
-    if (empty($_POST['email']))
-    {
+    if (empty($_POST['email'])){
       $errEmail="Email Required";
     }else {
       $email=$_POST['email'];
     }
 
-    if (empty($_POST['password']))
-    {
+    if (empty($_POST['password'])){
       $errPassword="Password Required";
     }else {
       $password=$_POST['password'];
@@ -69,6 +68,12 @@
 						<input style="width: 100%; height: 30px;" type="submit" name="submit" value="Submit">
 					</td>
 				</tr>
+
+        <tr>
+          <td colspan="2" align="center">
+            <a href="signup.php">Register Here!</a>
+          </td>
+        </tr>
 			</table>
     </form>
   </div>

@@ -65,7 +65,7 @@
 <body>
   <div style="width: 100%; height: 60px; background-color: #dfdfdf; display: flex; justify-content: space-between; position: fixed;">
     <div style="padding-left: 30px; padding-bottom: 10px;">
-      <h2><a style="text-decoration: none; color: black;" href="home.php">Travel Diary</a></h2>
+      <h2><a style="text-decoration: none; color: black;" href="index.php">Travel Diary</a></h2>
     </div>
     <?php if (isset($id)): ?>
       <div style="padding-top: 24px;">

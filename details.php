@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    var_dump($_SESSION);
+?>
 <!DOCTYPE html>
   
     <?php require('inc/navbar.php'); ?>

@@ -1,6 +1,6 @@
 <?php
   require('config/db.php');
-  mysqli_close($conn);
+
   session_start();
   $id = $_SESSION['id'];
   $name = $_SESSION['name'];
@@ -26,7 +26,7 @@
 
   <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
     <div class="card" style="margin: 10px;">
-      <a style="text-decoration: none;" href="details.html">
+      <a style="text-decoration: none;" href="details.php">
         <img src="images/amikhum.jpg" alt="Avatar" style="width:100%">
         <div class="container">
           <h4><b>Amiakhum Waterfall</b></h4>

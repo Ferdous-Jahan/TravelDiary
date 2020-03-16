@@ -1,10 +1,3 @@
-<?php
-  session_start();
-  $id = null;
-  //$name = null;
-  //$id = $_SESSION['id'];
-  //$name = $_SESSION['name'];
-?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -72,7 +65,7 @@
 <body>
   <div style="width: 100%; height: 60px; background-color: #dfdfdf; display: flex; justify-content: space-between; position: fixed;">
     <div style="padding-left: 30px; padding-bottom: 10px;">
-      <h2><a style="text-decoration: none; color: black;" href="home.html">Travel Diary</a></h2>
+      <h2><a style="text-decoration: none; color: black;" href="home.php">Travel Diary</a></h2>
     </div>
     <?php if (isset($id)): ?>
       <div style="padding-top: 24px;">
@@ -83,7 +76,7 @@
       </div>
 
       <div style="margin: 16px;">
-        <a href="user.php"><i style="padding-right: 14px;" title="Profile" class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+        <a href="user.php"><i style="padding-right: 14px;" title="Profile" class="fa fa-user fa-2x" aria-hidden="true"><?php echo $name; ?></i></a>
         <a href="signup.php"><i style="padding-right: 14px;" class="fa fa-user-plus fa-2x" title="Sign Up" aria-hidden="true"></i></a>
         <a href="login.php"><i style="padding-right: 14px;" class="fa fa-sign-in fa-2x" title="Log In" aria-hidden="true"></i></a>
         <a href="login.php"><i style="padding-right: 14px;" title="Logout" class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>

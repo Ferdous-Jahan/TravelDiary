@@ -34,20 +34,24 @@
 			)
 		);
 
-		//transfer filtered values into a new array
+		//transfer filtered values into a new array.
 		$filteredArr = filter_input_array(INPUT_POST, $filters);
 
-		//check values and set html field values and error messages
+		//check values and set html field values and error messages.
 		(isset($filteredArr['name'])) ? ((strlen($filteredArr['name']) > 0 ) ? ($name = $filteredArr['name']) : $errName = "Name Required") : $errName = "Name Required" ;
 		(isset($filteredArr['email'])) ? ($email = $filteredArr['email']) : $errEmail = "Valid Email Required" ;
 		(isset($filteredArr['password'])) ? ((strlen($filteredArr['password']) > 0 ) ? ($password = $filteredArr['password']) : $errPassword = "Password Required") : $errPassword = "Password Required" ;
 
 		if ($name != NULL && $email != NULL && $password != NULL) {
+			//fetch values from users table and put them in result then transfer them to users as array.
 			$query = 'SELECT * FROM users';
 			$result = mysqli_query($conn, $query);
 			$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 			mysqli_free_result($result);
 
+			//check whether the users array is empty, if not check whether the email is unique, if it is unique then insert into users table.
+			//if the array is empty goes to else block.
+			//another query to get the updated users table and set session values for id and name then redirect to homepage.
 			if ((array) $users) {
 				foreach ($users as $user) {
 					if($user['email'] === $email){
@@ -55,7 +59,19 @@
 					}else {
 						$query1 = "INSERT INTO users (name, email, password, status) VALUES ('$name', '$email', '$password', '$status')";
 						if (mysqli_query($conn, $query1)) {
-							echo "success!";
+							$query = 'SELECT * FROM users';
+							$result = mysqli_query($conn, $query);
+							$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+							mysqli_free_result($result);
+							foreach ($users as $user) {
+								if ($user['email'] = $email) {
+									session_start();
+									$_SESSION['id'] = $user['id'];
+									$_SESSION['name'] = $user['name'];
+
+									header('Location: index.php');
+								}
+							}
 						}else {
 							echo 'ERROR: '.mysqli_error($conn);
 						}
@@ -65,7 +81,19 @@
 			}else {
 				$query1 = "INSERT INTO users (name, email, password, status) VALUES ('$name', '$email', '$password', '$status')";
 				if (mysqli_query($conn, $query1)) {
-					echo "success!";
+					$query = 'SELECT * FROM users';
+							$result = mysqli_query($conn, $query);
+							$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+							mysqli_free_result($result);
+							foreach ($users as $user) {
+								if ($user['email'] = $email) {
+									session_start();
+									$_SESSION['id'] = $user['id'];
+									$_SESSION['name'] = $user['name'];
+
+									header('Location: index.php');
+								}
+							}
 				}else {
 					echo 'ERROR: '.mysqli_error($conn);
 				}

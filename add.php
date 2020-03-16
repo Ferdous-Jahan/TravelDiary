@@ -62,7 +62,7 @@
                 $errImage = "There is an error try again.";
             }
 
-            $query = "INSERT INTO pendings (title, details, image) VALUES ('$title', '$details', '$fileDestination')";
+            $query = "INSERT INTO pendings (title, details, image, user_id) VALUES ('$title', '$details', '$fileDestination', '$id')";
             if (mysqli_query($conn, $query)) {
                 $message = "Post uploaded for approval.";
                 echo "<script type='text/javascript'>alert('$message');</script>";

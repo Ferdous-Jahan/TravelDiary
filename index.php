@@ -8,7 +8,7 @@
     header('Location: login.php');
   }
 
-  $query = 'SELECT * FROM posts';
+  $query = 'SELECT * FROM posts ORDER BY created_on DESC';
   $result = mysqli_query($conn, $query);
   $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
   mysqli_free_result($result);
@@ -32,7 +32,7 @@
   <?php foreach ($posts as $post): ?>
     <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
     <div class="card" style="margin: 10px;">
-      <a style="text-decoration: none;" href="details.php">
+      <a style="text-decoration: none;" href="details.php?postid=<?php echo $post['id']; ?>">
         <img src="<?php echo $post['image']; ?>" alt="Avatar" style="width:100%">
         <div class="container">
           <h4><b><?php echo $post['title']; ?></b></h4>

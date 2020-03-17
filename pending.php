@@ -6,6 +6,17 @@
     if (!isset($id)) {
         header('Location: login.php');
     }
+
+    require('config/db.php');
+    $query = "SELECT * from pendings";
+    $result = mysqli_query($conn, $query);
+    $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    
+    $query = 'SELECT * FROM users';
+    $result = mysqli_query($conn, $query);
+    $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
 ?>
 <!DOCTYPE html>
     
@@ -20,17 +31,22 @@
                 <th>User</th>
                 <th>Actions</th>
             </tr>
-            <tr>
-                <td>Bandarban</td>
-                <td>Choto</td>
-                <td> <a href="postdetails.html"><button type="button">Details</button></a> <button type="button">Approve</button> <button type="button">Block</button></td>
-            </tr>
-            <tr>
-                <td>Rangamati</td>
-                <td>Fahim</td>
-                <td><button type="button">Details</button> <button type="button">Approve</button> <button type="button">Block</button></td>
-            </tr>
 
+            <?php foreach ($posts as $post): ?>
+                <tr>
+                    <td><?php echo $post['title']; ?></td>
+                    <td>
+                        <?php
+                            foreach ($users as $user) {
+                                 if ($user['id'] === $post['user_id']) {
+                                     echo $user['name'];
+                                 }
+                             } 
+                        ?>
+                    </td>
+                    <td> <a href="postdetails.php?postid=<?php echo $post['id']; ?>"><button type="button">Details</button>
+                </tr>
+            <?php endforeach ?>
         </table>
     </div>
 </body>

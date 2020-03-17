@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    $id = $_SESSION['id'];
+    $name = $_SESSION['name'];
+    $role = $_SESSION['role'];
+    if (!isset($id)) {
+        header('Location: login.php');
+    }
+?>
 <!DOCTYPE html>
 
     <?php require('inc/navbar.php'); ?>

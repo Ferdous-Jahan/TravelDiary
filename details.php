@@ -1,6 +1,11 @@
 <?php
     session_start();
-    var_dump($_SESSION);
+    $id = $_SESSION['id'];
+    $name = $_SESSION['name'];
+    $role = $_SESSION['role'];
+    if (!isset($id)) {
+        header('Location: login.php');
+    }
 ?>
 <!DOCTYPE html>
   

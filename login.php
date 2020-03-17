@@ -27,19 +27,34 @@
       $result = mysqli_query($conn, $query);
       $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
       mysqli_free_result($result);
-      mysqli_close($conn);
       foreach ($users as $user) {
         if ($user['email'] === $email && $user['password'] === $password) {
           session_start();
           $_SESSION['id'] = $user['id'];
           $_SESSION['name'] = $user['name'];
+          $_SESSION['role'] = "user";
           header('Location: index.php');
-        }else {
-          $errFinal = "Invalid email or password";
+        } else {
+          $query = 'SELECT * FROM admins';
+          $result = mysqli_query($conn, $query);
+          $admins = mysqli_fetch_all($result, MYSQLI_ASSOC);
+          mysqli_free_result($result);
+          foreach ($admins as $admin) {
+            if ($admin['email'] === $email && $admin['password'] === $password) {
+              session_start();
+              $_SESSION['id'] = $admin['id'];
+              $_SESSION['name'] = $admin['name'];
+              $_SESSION['role'] = $admin['role'];
+              header('Location: adminhome.php');
+            } else {
+              $errFinal = "Invalid email or password";
+            }
+            
+          }
         }
       }
     }
-  }
+  }  
 ?>
 
 <!DOCTYPE html>

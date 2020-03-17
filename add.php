@@ -17,24 +17,26 @@
     if (isset($_POST['submit'])) {
         if (empty($_POST['title'])) {
           $errTitle="Title Required";
-        }else {
+        } else {
           $title=$_POST['title'];
         }
 
         if (empty($_POST['details'])) {
           $errDetails="Details Required";
-        }else {
+        } else {
           $details=$_POST['details'];
         }
 
         if (empty($_FILES['image']['name'])) {
           $errImage="Image Required";
-        }else {
+        } else {
           $image=$_FILES['image']['name'];
         }
 
         if ($title != NULL && strlen($title) > 0 && $details != NULL && strlen($details) > 0 && $image != NULL && strlen($image) > 0 ) {
+
             require('config/db.php');
+
             $fileNameExt = $_FILES['image']['name'];
             $fileTmpName = $_FILES['image']['tmp_name'];
             $fileSize = $_FILES['image']['size'];
@@ -48,17 +50,17 @@
 
             if ($fileError === 0) {
                 if (in_array($fileExt, $allowed)) {
-                    if($fileSize <= 10000000){
+                    if($fileSize <= 10000000) {
                         $fileNameNew = $fileName.time().".".$fileExt;
                         $fileDestination = "images/".$fileNameNew;
                         move_uploaded_file($fileTmpName, $fileDestination);
-                    }else{
+                    } else {
                         $errImage =  "Image size cannot be over 10mb.";
                     }
-                }else{
+                } else {
                     $errImage = "File type not supported.";
                 }
-            }else{
+            } else {
                 $errImage = "There is an error try again.";
             }
 
@@ -66,6 +68,7 @@
             if (mysqli_query($conn, $query)) {
                 $message = "Post uploaded for approval.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
+                mysqli_close($conn);
                 header('Location: index.php');
             } else {
                 echo 'ERROR: '.mysqli_error($conn);

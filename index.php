@@ -29,19 +29,19 @@
   </div>
   </div>
 
-  <?php foreach ($posts as $post): ?>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-    <div class="card" style="margin: 10px;">
-      <a style="text-decoration: none;" href="details.php?postid=<?php echo $post['id']; ?>">
-        <img src="<?php echo $post['image']; ?>" alt="Avatar" style="width:100%">
-        <div class="container">
-          <h4><b><?php echo $post['title']; ?></b></h4>
-          <p><?php echo $post['details']; ?></p>
-        </div>
-      </a>
-    </div>
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <?php foreach ($posts as $post): ?>    
+      <div class="card" style="margin: 10px;">
+        <a style="text-decoration: none;" href="details.php?postid=<?php echo $post['id']; ?>">
+          <img src="<?php echo $post['image']; ?>" alt="Avatar" style="width:100%">
+          <div class="container">
+            <h4><b><?php echo $post['title']; ?></b></h4>
+            <p><?php echo $post['details']; ?></p>
+          </div>
+        </a>
+      </div>
+    <?php endforeach ?>
   </div>
-  <?php endforeach ?>
 
 </body>
 

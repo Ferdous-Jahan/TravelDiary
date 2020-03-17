@@ -45,12 +45,13 @@
             $fileDetails = explode('.', $fileNameExt);
             $fileName = $fileDetails[0];
             $fileExt = strtolower($fileDetails[1]);
+            $fileDestination = "";
 
             $allowed = array('jpg', 'jpeg', 'png');
 
             if ($fileError === 0) {
                 if (in_array($fileExt, $allowed)) {
-                    if($fileSize <= 10000000) {
+                    if($fileSize <= 100000000000000) {
                         $fileNameNew = $fileName.time().".".$fileExt;
                         $fileDestination = "images/".$fileNameNew;
                         move_uploaded_file($fileTmpName, $fileDestination);
@@ -63,6 +64,11 @@
             } else {
                 $errImage = "There is an error try again.";
             }
+
+            var_dump($title);
+            var_dump($details);
+            var_dump($fileDestination);
+            var_dump($id);
 
             $query = "INSERT INTO pendings (title, details, image, user_id) VALUES ('$title', '$details', '$fileDestination', '$id')";
             if (mysqli_query($conn, $query)) {

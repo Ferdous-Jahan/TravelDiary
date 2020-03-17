@@ -60,13 +60,10 @@
             <img src="<?php echo $post['image']; ?>" alt="Avatar" style="width:100%">
         </div>
 
-        <div style="width:590px; height: 250px;" class="item2">
-            <h3>Title: <?php echo $post['title']; ?></h3>
-            <h5>Date: <?php echo $post['created_on']; ?></h5>
-        </div>
-
         <div style="overflow-y: scroll; width:590px; height: 280px;" class="item3">
+            <h3>Title: <?php echo $post['title']; ?></h3>
             <h4>Author: <?php echo $user['name']; ?></h4>
+            <small>Date: <?php echo $post['created_on']; ?></small>
             <h4>Description:</h4>
             <p><?php echo $post['details']; ?></p>
         </div>

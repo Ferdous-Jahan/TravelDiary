@@ -84,15 +84,6 @@
       <h2><a style="text-decoration: none; color: black;" href="<?php echo $url; ?>">Travel Diary</a></h2>
     </div>
     <?php if (isset($id)): ?>
-      <?php if ($role === "user"): ?>
-        <div style="padding-top: 24px;">
-          <form action="">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
-        </div>
-      <?php endif ?>
-
       <div style="margin: 16px;">
         <a href="user.php"><i style="padding-right: 14px;" title="Profile" class="fa fa-user fa-2x" aria-hidden="true"><?php echo $name; ?></i></a>
         <a href="login.php"><i style="padding-right: 14px;" title="Logout" class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>

@@ -12,7 +12,7 @@
 
     <?php require('inc/navbar.php'); ?>
 
-    <div style="cursor: pointer; padding-top: 54px;">
+    <div style="cursor: pointer; padding-top: 80px;">
         <div style="margin: 16px; display: flex; justify-content: center;">
             <a href="pending.php">
                 <i title="pending" class="fa fa-edit fa-4x" aria-hidden="true">Pending Posts</i>
@@ -22,7 +22,7 @@
 
     <div style="cursor: pointer; padding-top: 54px;">
         <div style="margin: 16px; display: flex; justify-content: center;">
-            <a href="userlist.html">
+            <a href="userlist.php">
                 <i title="users" class="fa fa-users fa-4x" aria-hidden="true">User List</i>
             </a>
         </div>

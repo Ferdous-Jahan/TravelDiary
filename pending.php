@@ -22,7 +22,7 @@
     
     <?php require('inc/navbar.php'); ?>
 
-    <div style="padding-top: 94px;">
+    <div style="padding-top: 94px;" class="container">
         <h1>Pending Posts</h1>
 
         <table>

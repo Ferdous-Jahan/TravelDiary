@@ -81,20 +81,20 @@
             <?php if ((array) $comments): ?>
                 <?php foreach ($comments as $comment): ?>
                     <div>
-                        <p><?php 
+                        <p>
+                            <?php 
                                 $query = "SELECT * FROM users WHERE id =".$comment['user_id'];
                                 $result = mysqli_query($conn, $query);
                                 $user = mysqli_fetch_assoc($result);
                                 mysqli_free_result($result);
                                 echo $user['name'];
-                            ?>: <?php echo $comment['details']; ?></p>
+                            ?>: <?php echo $comment['details']; ?>
+                        </p>
                     </div>
                 <?php endforeach ?>
             <?php endif ?>
         </div>
-
     </div>
-
 </body>
 
 </html>

@@ -28,7 +28,7 @@
       $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
       mysqli_free_result($result);
       foreach ($users as $user) {
-        if ($user['email'] === $email && $user['password'] === $password) {
+        if ($user['email'] === $email && $user['password'] === $password && $user['status'] == 1) {
           session_start();
           $_SESSION['id'] = $user['id'];
           $_SESSION['name'] = $user['name'];

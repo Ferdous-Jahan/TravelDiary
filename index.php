@@ -33,7 +33,7 @@
     <?php foreach ($posts as $post): ?>    
       <div class="card" style="margin: 10px;">
         <a style="text-decoration: none;" href="details.php?postid=<?php echo $post['id']; ?>">
-          <img src="<?php echo $post['image']; ?>" alt="Avatar" style="width:100%">
+          <img src="<?php echo $post['image']; ?>" alt="Avatar" style="width:100%; height: 300px;">
           <div class="container">
             <h4><b><?php echo $post['title']; ?></b></h4>
             <p><?php echo $post['details']; ?></p>

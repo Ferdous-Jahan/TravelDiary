@@ -1,46 +1,71 @@
 <?php
+	require('config/db.php');
 	session_start();
 	$id = $_SESSION['id'];
 	$name = $_SESSION['name'];
 	$role = $_SESSION['role'];
+
 	if (!isset($id)) {
     	header('Location: login.php');
   	}
 
-	$err_name="";
-	$name="";
-	$err_uname="";
-	$uname="";
-	$err_pass="";
-	$pass="";
-	if(isset($_POST['submit']))
-	{
-		
-		if(empty($_POST['name']))
-		{
-			$err_name="*Name Required";
-		}
-		else
-		{			
-			$name=htmlspecialchars($_POST['name']);
-			echo $name;
-		}
-		if (empty($_POST['uname']))
-		{
-			$err_uname="*Usename Required";
-		}
-		else
-		{
-			$uname=$_POST['uname'];
-		}
-		if (empty($_POST['pass']))
-		{
-			$err_pass="*Password Required";
-		}
-		else
-		{
-			$pass=$_POST['pass'];
-		}
+  	$regName = '';
+	$email = '';
+	$password = '';
+	$role = "moderator";
+
+	$errName = '';
+	$errEmail = '';
+	$errPassword = '';
+
+  	if(isset($_POST['submit'])){
+
+		$filters = array(
+			'regName' => array(
+				'filter' => FILTER_SANITIZE_STRING,
+				'options' => array(
+					'default' => NULL
+				)
+			),
+			'email' => array(
+				'filter' => FILTER_VALIDATE_EMAIL,
+				'options' => array(
+					'default' => NULL
+				)
+			),
+			'password' => array(
+				'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
+				'options' => array(
+					'default' => NULL
+				)
+			)
+		);
+
+		//transfer filtered values into a new array.
+		$filteredArr = filter_input_array(INPUT_POST, $filters);
+
+		//check values and set html field values and error messages.
+		(isset($filteredArr['regName'])) ? ((strlen($filteredArr['regName']) > 0 ) ? ($regName = $filteredArr['regName']) : $errName = "Name Required") : $errName = "Name Required" ;
+		(isset($filteredArr['email'])) ? ($email = $filteredArr['email']) : $errEmail = "Valid Email Required" ;
+		(isset($filteredArr['password'])) ? ((strlen($filteredArr['password']) > 0 ) ? ($password = $filteredArr['password']) : $errPassword = "Password Required") : $errPassword = "Password Required" ;
+
+		$query = 'SELECT * FROM admins';
+        $result = mysqli_query($conn, $query);
+    	$moderators = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    	mysqli_free_result($result);
+
+    	foreach ($moderators as $moderator) {
+    		if ($moderator['email'] == $email) {
+    			$errEmail = "Email already exists";
+    		} else {
+    			$query1 = "INSERT INTO admins (name, email, password, role) VALUES ('$regName', '$email', '$password', '$role')";
+    			if (mysqli_query($conn, $query1)) {
+    				header('Location: moderators.php');
+				}else {
+					echo 'ERROR: '.mysqli_error($conn);
+				}
+    		}
+    	}
 	}
 ?>
 
@@ -51,51 +76,27 @@
 
   <div style="padding-top: 54px; display: flex; flex-direction: column; align-items: center;">
 
-	<h1>Registration</h1>
-		<form method="post" action="">
+	<h1>Moderator Registration</h1>
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF'])?>">
 			<table style="text-align: center; border-style: solid; height: 300px;">
 				<tr>
 					<td>Name:</td>
-					<td><input type="text" value="" name="name" >
-						<br><span style="color:red"><?php echo $err_name;?></span></td> 
-					
+					<td><input type="text" name="regName" value="<?php echo $regName; ?>">
+					<br><span style="color:red"><?php echo $errName; ?></span></td> 					
 				</tr>
+
 				<tr>
-					<td>Username: </td>
-					<td><input type="text" name="uname" value="">
-					<br><span style="color:red"><?php echo $err_uname;?></span></td>
-					
+					<td>Email: </td>
+					<td><input type="text" name="email" value="<?php echo $email; ?>">
+					<br><span style="color:red"><?php echo $errEmail; ?></span></td>					
 				</tr>
+
 				<tr>
 					<td>Password:</td>
-					<td> <input type="password" name="pass" value="">
-					<br><span style="color:red"><?php echo $err_pass;?></span></td>
-					
+					<td> <input type="password" name="password" value="<?php echo $password; ?>">
+					<br><span style="color:red"><?php echo $errPassword; ?></span></td>					
 				</tr>
-				<tr>
-					<td>Gender: </td>
-					<td><input type="radio" name="gender" value="Male"> Male <input type="radio" name="gender" value="Female"> Female</td>
-				</tr>
-				<tr>
-					<td>Hobbies: </td>
-					<td><input type="checkbox" name="hobbies[]" value="Movies"> Movies <input type="checkbox" name="hobbies[]" value="Music"> Music <input type="checkbox" name="hobbies[]" value="Games"> Games </td>
-				</tr>
-				<tr>
-					<td>Profession: </td>
-					<td>
-						<select name="profession">
-							<option>Teacher</option>
-							<option selected="selected">Student</option>
-							<option>Govt. JOb</option>
-						</select>
-					</td>
-                </tr>
-                <tr>
-                    <td>Birth Date: </td>
-                    <td>
-                        <input type="date" id="birthday" name="birthday">
-                    </td>
-                </tr>
+
 				<tr>
 					<td colspan="2" align="center">
 						<input style="width: 100%; height: 30px;" type="submit" name="submit" value="Submit">

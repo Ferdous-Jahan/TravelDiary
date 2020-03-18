@@ -6,12 +6,30 @@
     if (!isset($id)) {
         header('Location: login.php');
     }
+
+    require('config/db.php');
+    $query = 'SELECT * FROM admins WHERE role = "moderator"';
+    $result = mysqli_query($conn, $query);
+    $moderators = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+
+    if (isset($_POST['delete'])) {
+        $query = "DELETE FROM admins WHERE id =".$_POST['moderatorid'];
+        if (mysqli_query($conn, $query)) {
+            $query = 'SELECT * FROM admins WHERE role = "moderator"';
+            $result = mysqli_query($conn, $query);
+            $moderators = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            mysqli_free_result($result);
+        } else {
+            echo 'ERROR: '.mysqli_error($conn);
+        }
+    }
 ?>
 <!DOCTYPE html>
    
     <?php require('inc/navbar.php'); ?>
     
-    <div style="padding-top: 94px;">
+    <div style="padding-top: 94px;" class="container">
         <h1>Moderators</h1>
 
         <table>
@@ -19,16 +37,16 @@
                 <th>Name</th>
                 <th>Actions</th>
             </tr>
-            <tr>
-                <td>Choto</td>
-                <td><a href="moderatordetails.html"><button type="button">Details</button></a> <button
-                        type="button">Block</button></td>
-            </tr>
-            <tr>
-                <td>Fahim</td>
-                <td><a href="moderatordetails.html"><button type="button">Details</button></a> <button
-                        type="button">Block</button></td>
-            </tr>
+
+            <?php foreach ($moderators as $moderator): ?>
+                <tr>
+                    <td><?php echo $moderator['name']; ?></td>
+                    <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF'])?>">
+                        <td><input type="submit" style="background-color: #db6060;" value="DELETE" name="delete"></td>
+                        <input type="hidden"  name="moderatorid" value="<?php echo $moderator['id']; ?>">
+                    </form>
+                </tr>
+            <?php endforeach ?>         
         </table>
         
         <div style="cursor: pointer; padding-top: 54px;">

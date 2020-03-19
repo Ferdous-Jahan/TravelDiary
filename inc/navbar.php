@@ -83,9 +83,13 @@
     <div style="padding-left: 30px; padding-bottom: 10px;">
       <h2><a style="text-decoration: none; color: black;" href="<?php echo $url; ?>">Travel Diary</a></h2>
     </div>
+
     <?php if (isset($id)): ?>
       <div style="margin: 16px;">
-        <a href="user.php"><i style="padding-right: 14px;" title="Profile" class="fa fa-user fa-2x" aria-hidden="true"><?php echo $name; ?></i></a>
+        <?php if ($role == "user"): ?>
+          <a href="myposts.php"><i style="padding-right: 14px;" title="MY Posts" class="fa fa-archive fa-2x" aria-hidden="true"> My Posts</i></a>
+        <?php endif ?>
+        <a href="user.php"><i style="padding-right: 14px;" title="Profile" class="fa fa-user fa-2x" aria-hidden="true"> <?php echo $name; ?></i></a>
         <a href="login.php"><i style="padding-right: 14px;" title="Logout" class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
       </div>
     <?php endif ?>

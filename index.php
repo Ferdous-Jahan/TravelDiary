@@ -36,7 +36,6 @@
           <img src="<?php echo $post['image']; ?>" alt="Avatar" style="width:100%; height: 300px;">
           <div class="container">
             <h4><b><?php echo $post['title']; ?></b></h4>
-            <p><?php echo $post['details']; ?></p>
           </div>
         </a>
       </div>

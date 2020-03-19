@@ -5,7 +5,7 @@
 	$name = $_SESSION['name'];
 	$role = $_SESSION['role'];
 
-	if (!isset($id)) {
+	if (!isset($id) && $role == "admin") {
     	header('Location: login.php');
   	}
 

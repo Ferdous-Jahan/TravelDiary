@@ -4,7 +4,7 @@
     $name = $_SESSION['name'];
     $role = $_SESSION['role'];
 
-    if (!isset($role)) {
+    if (!isset($id) && $role != "user") {
         header('Location: login.php');
     }
 ?>

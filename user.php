@@ -175,6 +175,10 @@
                 $errPassword = "Passwords do not match";
         }
     }
+
+    if (isset($_POST['back'])) {
+        header('Location: index.php');
+    }
     
 ?>
 <!DOCTYPE html>

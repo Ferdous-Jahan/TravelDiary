@@ -69,6 +69,7 @@
 									session_start();
 									$_SESSION['id'] = $user['id'];
 									$_SESSION['name'] = $user['name'];
+									$_SESSION['role'] = "user";
 									mysqli_close($conn);
 									header('Location: index.php');
 								}
@@ -90,6 +91,7 @@
 									session_start();
 									$_SESSION['id'] = $user['id'];
 									$_SESSION['name'] = $user['name'];
+									$_SESSION['role'] = "user";
 									mysqli_close($conn);
 									header('Location: index.php');
 								}

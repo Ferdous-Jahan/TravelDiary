@@ -63,6 +63,7 @@
         
     }
 ?>
+
 <!DOCTYPE html>
    
     <?php require('inc/navbar.php'); ?>

@@ -31,7 +31,7 @@
   <?php require('inc/navbar.php'); ?>
 
 
-  <div style="padding-top: 94px;" class="container">
+    <div style="padding-top: 94px;" class="container">
         <h1>My Posts</h1>
 
         <table>
@@ -45,7 +45,8 @@
                     <tr>
                         <td><?php echo $post['title']; ?></td>
                         <td><?php echo $post['created_on']; ?></td>
-                        <td><input type="submit" value="DELETE" name="delete"></td>
+                        <td> <a href="editpost.php?postid=<?php echo $post['id']; ?>"><button type="button">EDIT</button></a>
+                        <input type="submit" style="background-color: #db6060;" value="DELETE" name="delete"></td>
                         <input type="hidden"  name="postid" value="<?php echo $post['id']; ?>">
                     </tr>
                 <?php endforeach ?>

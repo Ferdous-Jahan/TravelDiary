@@ -16,7 +16,6 @@
 
 		$filters = array(
 			'name' => array(
-				'filter' => FILTER_SANITIZE_STRING,
 				'options' => array(
 					'default' => NULL
 				)
@@ -37,7 +36,7 @@
 
 		//transfer filtered values into a new array.
 		$filteredArr = filter_input_array(INPUT_POST, $filters);
-
+		
 		//check values and set html field values and error messages.
 		(isset($filteredArr['name'])) ? ((strlen($filteredArr['name']) > 0 ) ? ($name = $filteredArr['name']) : $errName = "Name Required") : $errName = "Name Required" ;
 		(isset($filteredArr['email'])) ? ($email = $filteredArr['email']) : $errEmail = "Valid Email Required" ;

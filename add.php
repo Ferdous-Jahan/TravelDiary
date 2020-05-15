@@ -65,23 +65,21 @@
                 $errImage = "There is an error try again.";
             }
 
-            var_dump($title);
-            var_dump($details);
-            var_dump($fileDestination);
-            var_dump($id);
-
             $query = "INSERT INTO pendings (title, details, image, user_id) VALUES ('$title', '$details', '$fileDestination', '$id')";
             if (mysqli_query($conn, $query)) {
                 $message = "Post uploaded for approval.";
-                echo "<script type='text/javascript'>alert('$message');</script>";
+                echo "<script type='text/javascript'>
+                        alert('$message')
+                        window.location.replace('index.php');
+                    </script>";
                 mysqli_close($conn);
-                header('Location: index.php');
             } else {
                 echo 'ERROR: '.mysqli_error($conn);
             }
         }
     }
 ?>
+
 <!DOCTYPE html>
    
     <?php require('inc/navbar.php'); ?>

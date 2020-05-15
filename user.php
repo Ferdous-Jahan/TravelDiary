@@ -129,7 +129,7 @@
                 $query = "UPDATE admins SET name='$updateName', email='$email' WHERE id = {$id}";
                 if (mysqli_query($conn, $query)) {
                     $_SESSION['name'] = $updateName;
-                    header('Location: index.php');
+                    header('Location: adminhome.php');
                 } else {
                     echo 'ERROR: '.mysqli_error($conn);
                 }
@@ -166,7 +166,7 @@
                     $query = "UPDATE admins SET name='$updateName', email='$email', password='$password' WHERE id = {$id}";
                     if (mysqli_query($conn, $query)) {
                         $_SESSION['name'] = $updateName;
-                        header('Location: index.php');
+                        header('Location: adminhome.php');
                     } else {
                         echo 'ERROR: '.mysqli_error($conn);
                     }

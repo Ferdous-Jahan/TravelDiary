@@ -4,6 +4,8 @@
   session_start();
   $id = $_SESSION['id'];
   $name = $_SESSION['name'];
+  $role = $_SESSION['role'];
+
   if (!isset($id)) {
     header('Location: login.php');
   }
@@ -14,6 +16,7 @@
   mysqli_free_result($result);
   mysqli_close($conn);
 ?>
+
 <!DOCTYPE html>
 
   <?php require('inc/navbar.php'); ?>

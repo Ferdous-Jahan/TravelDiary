@@ -56,9 +56,11 @@
         $query = "DELETE FROM pendings WHERE id =".$postid;
         if (mysqli_query($conn, $query)) {
             $message = "Post deleted.";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-            mysqli_close($conn);
-            header('Location: pending.php');
+            echo "<script type='text/javascript'>
+                        alert('$message')
+                        window.location.replace('pending.php');
+                    </script>";
+                mysqli_close($conn);
         } else {
             echo 'ERROR: '.mysqli_error($conn);
         }
